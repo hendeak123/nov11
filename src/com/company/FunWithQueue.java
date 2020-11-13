@@ -5,22 +5,19 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.*;
 
-public class FunWithQueue implements IFunWithQueue {
+public class FunWithQueue<T> implements IFunWithQueue<T> {
     @Override
-    public void initializeQueue() {
-        Queue<Integer> numbers = new LinkedList<Integer>();
-        numbers.add(5);
-        numbers.add(35);
-        numbers.add(100);
-        numbers.add(4);
-        numbers.add(42);
-        numbers.add(11);
-        System.out.println(numbers);
-        iterateQueue(numbers);
+    public void initializeQueue(T[] anything) {
+        System.out.println(anything);
+        Queue<T> queue = new LinkedList<>();
+        for(int i = 0; i < anything.length; i++){
+            queue.offer(anything[i]);
+        }
+        iterateQueue(queue);
     }
 
     @Override
-    public void iterateQueue(Queue<Integer> numbers) {
+    public void iterateQueue(Queue<T> numbers) {
         Iterator iterator = numbers.iterator();
         while (iterator.hasNext()) {
             System.out.println(iterator.next());
